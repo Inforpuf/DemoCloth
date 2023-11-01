@@ -1,0 +1,58 @@
+springdoc:
+  api-docs.path: /api-docs
+server:
+  servlet:
+    contextPath: /api/v3
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd-HH.mm.ss
+    serialization.WRITE_DATES_AS_TIMESTAMPS: true
+
+  # To See H2 Console in Browser:
+  # http://localhost:8080/api/v3/h2-console
+  # Enabling H2 Console
+  h2:
+    console:
+      enabled: true
+  # ===============================
+  # DB
+  # ===============================
+  datasource:
+    url: jdbc:h2:mem:clothDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    platform: h2
+    username: sa
+    password: entra4
+
+  # ===============================
+  # JPA / HIBERNATE
+  # ===============================
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: false
+        format_sql: false
+        dialect: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    defer-datasource-initialization: true
+  session:
+    jdbc:
+      initialize-schema: always
+  sql:
+    init:
+      continue-on-error: true
+      mode: always
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
