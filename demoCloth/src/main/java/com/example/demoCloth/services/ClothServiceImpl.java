@@ -1,13 +1,14 @@
 package com.example.demoCloth.services;
 
 import com.example.demoCloth.commons.mappers.ItemMapper;
-import com.example.demoCloth.model.responses.ItemResponse;
 import com.example.demoCloth.model.entities.Brand;
+import com.example.demoCloth.model.responses.ItemResponse;
 import com.example.demoCloth.model.specifications.BrandSpecifications;
 import com.example.demoCloth.repositories.BrandRepository;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,7 @@ public class ClothServiceImpl implements ClothService {
      * @return A list of items containing product identifier, brand identifier, price list, date start and end, and price.
      */
     @Override
+    @Cacheable(value="items", keyGenerator="customKeyGenerator")
     public List<ItemResponse> findItem(String date, String productId, String brandId) {
         LocalDateTime askedDate = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd-HH.mm.ss"));
         List<ItemResponse> itemResponseList = new ArrayList<>();
