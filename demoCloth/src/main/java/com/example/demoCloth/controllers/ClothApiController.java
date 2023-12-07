@@ -2,6 +2,7 @@ package com.example.demoCloth.controllers;
 
 import com.example.demoCloth.model.responses.ItemResponse;
 import com.example.demoCloth.services.ClothService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -30,6 +31,7 @@ public class ClothApiController implements IClothApiController {
 
     @Override
     @GetMapping(produces = "application/json")
+    @RateLimiter(name = "rateLimitingFindItem")
     public ResponseEntity<List<ItemResponse>> findItem(String version, String date, String productId, String brandId) {
 
         if (version.equals("v1")) {

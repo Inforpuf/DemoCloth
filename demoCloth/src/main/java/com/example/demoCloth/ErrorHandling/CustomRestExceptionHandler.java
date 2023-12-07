@@ -1,5 +1,6 @@
 package com.example.demoCloth.ErrorHandling;
 
+import io.github.resilience4j.ratelimiter.RequestNotPermitted;
 import jakarta.annotation.Nonnull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
@@ -156,6 +157,18 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleHttpClientErrorException(final Exception ex) {
         log.info(ex.getClass().getName());
         final ApiErrorMessage apiErrorMessage = new ApiErrorMessage(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), "error occurred");
+        return new ResponseEntity<>(apiErrorMessage, new HttpHeaders(), apiErrorMessage.getStatus());
+    }
+
+    /**
+     * Handles rate limit errors.
+     * @param ex Exception raised
+     * @return the custom response as ResponseEntity<Object>
+     */
+    @ExceptionHandler({RequestNotPermitted.class})
+    public ResponseEntity<Object> handleRequestNotPermitted(final Exception ex) {
+        log.info(ex.getClass().getName());
+        final ApiErrorMessage apiErrorMessage = new ApiErrorMessage(HttpStatus.TOO_MANY_REQUESTS, ex.getLocalizedMessage(), "error occurred");
         return new ResponseEntity<>(apiErrorMessage, new HttpHeaders(), apiErrorMessage.getStatus());
     }
 }
