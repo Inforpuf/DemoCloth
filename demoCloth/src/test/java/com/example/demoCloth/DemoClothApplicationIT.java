@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -31,7 +30,9 @@ class DemoClothApplicationIT {
     void test1() throws Exception {
 
         MvcResult result =
-                this.mockMvc.perform(get("/cloths?date=2020-06-14-10.00.00&?productId=35455&?brandId=1"))
+                this.mockMvc.perform(
+                        MyTestRequestFactory
+                                .myFactoryRequest("/cloths?date=2020-06-14-10.00.00&productId=35455&brandId=1"))
                         .andDo(print())
                         .andExpect(status().isOk())
                         .andReturn();
@@ -57,7 +58,9 @@ class DemoClothApplicationIT {
     void test2() throws Exception {
 
         MvcResult result =
-                this.mockMvc.perform(get("/cloths?date=2020-06-14-16.00.00&?productId=35455&?brandId=1"))
+                this.mockMvc.perform(
+                        MyTestRequestFactory
+                                .myFactoryRequest("/cloths?date=2020-06-14-16.00.00&productId=35455&brandId=1"))
                         .andDo(print())
                         .andExpect(status().isOk())
                         .andReturn();
@@ -90,7 +93,9 @@ class DemoClothApplicationIT {
     void test3() throws Exception {
 
         MvcResult result =
-                this.mockMvc.perform(get("/cloths?date=2020-06-14-21.00.00&?productId=35455&?brandId=1"))
+                this.mockMvc.perform(
+                                MyTestRequestFactory
+                                        .myFactoryRequest("/cloths?date=2020-06-14-21.00.00&productId=35455&brandId=1"))
                         .andDo(print())
                         .andExpect(status().isOk())
                         .andReturn();
@@ -116,7 +121,9 @@ class DemoClothApplicationIT {
     void test4() throws Exception {
 
         MvcResult result =
-                this.mockMvc.perform(get("/cloths?date=2020-06-15-10.00.00&?productId=35455&?brandId=1"))
+                this.mockMvc.perform(
+                        MyTestRequestFactory
+                                .myFactoryRequest("/cloths?date=2020-06-15-10.00.00&productId=35455&brandId=1"))
                         .andDo(print())
                         .andExpect(status().isOk())
                         .andReturn();
@@ -149,7 +156,9 @@ class DemoClothApplicationIT {
     void test5() throws Exception {
 
         MvcResult result =
-                this.mockMvc.perform(get("/cloths?date=2020-06-16-21.00.00&?productId=35455&?brandId=1"))
+                this.mockMvc.perform(
+                        MyTestRequestFactory
+                                .myFactoryRequest("/cloths?date=2020-06-16-21.00.00&productId=35455&brandId=1"))
                         .andDo(print())
                         .andExpect(status().isOk())
                         .andReturn();

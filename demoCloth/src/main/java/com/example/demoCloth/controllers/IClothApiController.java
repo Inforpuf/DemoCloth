@@ -12,6 +12,8 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MissingRequestHeaderException;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -40,10 +42,11 @@ public interface IClothApiController {
             @ApiResponse(responseCode = "400", description = "Invalid data provided",
                     content = @Content(schema = @Schema()))
     })
-    ResponseEntity<List<ItemResponse>> findItem(@Parameter(in = "QUERY", description = "Date provided to check item availability", required = true)
+    ResponseEntity<List<ItemResponse>> findItem(@RequestHeader("version") String version,
+            @Parameter(in = "QUERY", description = "Date provided to check item availability", required = true)
                                                @NotNull @NotEmpty @Valid @RequestParam(value = "date") String date,
                                                 @Parameter(in = "QUERY", description = "Identifier of the product", required = true)
                                                @NotNull @NotEmpty @Valid @RequestParam(value = "productId") String productId,
                                                 @Parameter(in = "QUERY", description = "Identifier of the brand", required = true)
-                                               @NotNull @NotEmpty @Valid @RequestParam(value = "brandId") String brandId) ;
+                                               @NotNull @NotEmpty @Valid @RequestParam(value = "brandId") String brandId) throws MissingRequestHeaderException;
 }

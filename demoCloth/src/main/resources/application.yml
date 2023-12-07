@@ -1,10 +1,10 @@
 springdoc:
   api-docs.path: /api-docs
   packagesToScan: com.example.demoCloth.controllers, com.example.demoCloth.model
-  pathsToMatch: /v3, /cloths/**
+  pathsToMatch: /cloths/**
 server:
   servlet:
-    contextPath: /api/v3
+    contextPath: /api
   port: 8080
   error:
     include-message: always
@@ -16,7 +16,7 @@ spring:
     serialization.WRITE_DATES_AS_TIMESTAMPS: true
 
   # To See H2 Console in Browser:
-  # http://localhost:8080/api/v3/h2-console
+  # http://localhost:8080/api/h2-console
   # Enabling H2 Console
   h2:
     console:

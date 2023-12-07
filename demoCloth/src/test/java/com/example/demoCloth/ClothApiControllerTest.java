@@ -37,7 +37,12 @@ public class ClothApiControllerTest {
         List<ItemResponse> itemResponseList = List.of(itemResponse);
         when(service.findItem(any(), any(), any())).thenReturn(itemResponseList);
         MvcResult result =
-        this.mockMvc.perform(get("/cloths?date=2020-06-14T10.00.00&productId=35455&brandId=1")).andDo(print()).andExpect(status().isOk()).andReturn();
+                this.mockMvc.perform(
+                                MyTestRequestFactory
+                                        .myFactoryRequest("/cloths?date=2020-06-14T10.00.00&productId=35455&brandId=1"))
+                        .andDo(print())
+                        .andExpect(status().isOk())
+                        .andReturn();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
 
@@ -50,7 +55,10 @@ public class ClothApiControllerTest {
         ItemResponse itemResponse = ItemResponse.builder().build();
         List<ItemResponse> itemResponseList = List.of(itemResponse);
         when(service.findItem(any(), any(), any())).thenReturn(itemResponseList);
-        this.mockMvc.perform(get("/cloths")).andDo(print()).andExpect(status().is4xxClientError()).andReturn();
+        this.mockMvc.perform(
+                        MyTestRequestFactory
+                                .myFactoryRequest("/cloths"))
+                .andDo(print()).andExpect(status().is4xxClientError()).andReturn();
     }
 
     @Test
@@ -58,7 +66,10 @@ public class ClothApiControllerTest {
         ItemResponse itemResponse = ItemResponse.builder().build();
         List<ItemResponse> itemResponseList = List.of(itemResponse);
         when(service.findItem(any(), any(), any())).thenReturn(itemResponseList);
-        this.mockMvc.perform(get("/item")).andDo(print()).andExpect(status().is4xxClientError()).andReturn();
+        this.mockMvc.perform(
+                        MyTestRequestFactory
+                                .myFactoryRequest("/item"))
+                .andDo(print()).andExpect(status().is4xxClientError()).andReturn();
     }
 
     @Test
@@ -66,7 +77,19 @@ public class ClothApiControllerTest {
         ItemResponse itemResponse = ItemResponse.builder().build();
         List<ItemResponse> itemResponseList = List.of(itemResponse);
         when(service.findItem(any(), any(), any())).thenReturn(itemResponseList);
-        this.mockMvc.perform(get("/cloths/item")).andDo(print()).andExpect(status().is4xxClientError()).andReturn();
+        this.mockMvc.perform(
+                        MyTestRequestFactory
+                                .myFactoryRequest("/cloths/item"))
+                .andDo(print()).andExpect(status().is4xxClientError()).andReturn();
+    }
+
+    @Test
+    void checkControllerKO_NoVersion() throws Exception {
+        ItemResponse itemResponse = ItemResponse.builder().build();
+        List<ItemResponse> itemResponseList = List.of(itemResponse);
+        when(service.findItem(any(), any(), any())).thenReturn(itemResponseList);
+        this.mockMvc.perform(get("/cloths"))
+                .andDo(print()).andExpect(status().is4xxClientError()).andReturn();
     }
 
 
