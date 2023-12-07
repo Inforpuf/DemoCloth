@@ -1,5 +1,7 @@
-package com.example.demoCloth.model;
+package com.example.demoCloth.model.specifications;
 
+import com.example.demoCloth.model.entities.Brand;
+import com.example.demoCloth.model.entities.Price;
 import jakarta.persistence.criteria.Join;
 import org.springframework.data.jpa.domain.Specification;
 

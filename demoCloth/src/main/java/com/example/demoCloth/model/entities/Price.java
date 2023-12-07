@@ -1,4 +1,4 @@
-package com.example.demoCloth.model;
+package com.example.demoCloth.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -61,7 +61,7 @@ public class Price {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        com.example.demoCloth.model.Price price = (com.example.demoCloth.model.Price) o;
+        Price price = (Price) o;
         return Objects.equals(this.productId, price.productId) &&
                 //this.brandSet.equals(price.brandSet) &&
                 Objects.equals(this.priceList, price.priceList) &&

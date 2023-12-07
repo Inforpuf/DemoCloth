@@ -1,6 +1,6 @@
 package com.example.demoCloth.repositories;
 
-import com.example.demoCloth.model.Brand;
+import com.example.demoCloth.model.entities.Brand;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

@@ -1,8 +1,8 @@
 package com.example.demoCloth.commons.mappers;
 
-import com.example.demoCloth.model.Brand;
-import com.example.demoCloth.model.Item;
-import com.example.demoCloth.model.Price;
+import com.example.demoCloth.model.responses.ItemResponse;
+import com.example.demoCloth.model.entities.Brand;
+import com.example.demoCloth.model.entities.Price;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
@@ -19,5 +19,5 @@ public interface ItemMapper {
      * @return query response.
      */
     @Mapping(target = "brandId", source = "brand.id")
-    Item priceToItem(Price source, Brand brand);
+    ItemResponse priceToItem(Price source, Brand brand);
 }

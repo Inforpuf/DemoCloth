@@ -1,8 +1,8 @@
 package com.example.demoCloth;
 
-import com.example.demoCloth.model.Brand;
-import com.example.demoCloth.model.Item;
-import com.example.demoCloth.model.Price;
+import com.example.demoCloth.model.responses.ItemResponse;
+import com.example.demoCloth.model.entities.Brand;
+import com.example.demoCloth.model.entities.Price;
 import com.example.demoCloth.repositories.BrandRepository;
 import com.example.demoCloth.services.ClothServiceImpl;
 import org.junit.jupiter.api.Assertions;
@@ -40,12 +40,12 @@ public class ClothServiceImplTest {
 
     @Test
     void findCustomerAllTest() {
-        List<Item> itemList = clothService.findItem("2023-12-15-12.00.00", PRODUCT_ID, "1");
-        Assertions.assertEquals(getItem(), itemList.get(0));
+        List<ItemResponse> itemResponseList = clothService.findItem("2023-12-15-12.00.00", PRODUCT_ID, "1");
+        Assertions.assertEquals(getItem(), itemResponseList.get(0));
     }
 
-    private Item getItem() {
-        return Item.builder()
+    private ItemResponse getItem() {
+        return ItemResponse.builder()
                 .brandId(1L)
                 .productId(Long.parseLong(PRODUCT_ID))
                 .endDate(END_DATE)

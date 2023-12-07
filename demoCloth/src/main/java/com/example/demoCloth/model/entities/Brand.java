@@ -1,4 +1,4 @@
-package com.example.demoCloth.model;
+package com.example.demoCloth.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;

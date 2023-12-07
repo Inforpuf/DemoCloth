@@ -1,6 +1,6 @@
 package com.example.demoCloth;
 
-import com.example.demoCloth.model.Price;
+import com.example.demoCloth.model.entities.Price;
 import com.example.demoCloth.repositories.ClothRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

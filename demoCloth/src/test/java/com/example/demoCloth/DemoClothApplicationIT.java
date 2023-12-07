@@ -1,6 +1,6 @@
 package com.example.demoCloth;
 
-import com.example.demoCloth.model.Item;
+import com.example.demoCloth.model.responses.ItemResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.Assertions;
@@ -40,9 +40,9 @@ class DemoClothApplicationIT {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
 
-        List<Item> itemList = Arrays.stream(objectMapper.readValue(result.getResponse().getContentAsString(), Item[].class)).toList();
+        List<ItemResponse> itemResponseList = Arrays.stream(objectMapper.readValue(result.getResponse().getContentAsString(), ItemResponse[].class)).toList();
 
-        itemList.forEach(item -> {
+        itemResponseList.forEach(item -> {
             Assertions.assertEquals(35455L, item.getProductId());
             Assertions.assertEquals(1L, item.getBrandId());
             Assertions.assertEquals(1, item.getPriceList());
@@ -66,9 +66,9 @@ class DemoClothApplicationIT {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
 
-        List<Item> itemList = Arrays.stream(objectMapper.readValue(result.getResponse().getContentAsString(), Item[].class)).toList();
+        List<ItemResponse> itemResponseList = Arrays.stream(objectMapper.readValue(result.getResponse().getContentAsString(), ItemResponse[].class)).toList();
 
-        itemList.forEach(item -> {
+        itemResponseList.forEach(item -> {
             Assertions.assertEquals(35455L, item.getProductId());
             Assertions.assertEquals(1L, item.getBrandId());
             if (1 == item.getPriceList()) {
@@ -99,9 +99,9 @@ class DemoClothApplicationIT {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
 
-        List<Item> itemList = Arrays.stream(objectMapper.readValue(result.getResponse().getContentAsString(), Item[].class)).toList();
+        List<ItemResponse> itemResponseList = Arrays.stream(objectMapper.readValue(result.getResponse().getContentAsString(), ItemResponse[].class)).toList();
 
-        itemList.forEach(item -> {
+        itemResponseList.forEach(item -> {
             Assertions.assertEquals(35455L, item.getProductId());
             Assertions.assertEquals(1L, item.getBrandId());
             Assertions.assertEquals(1, item.getPriceList());
@@ -125,9 +125,9 @@ class DemoClothApplicationIT {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
 
-        List<Item> itemList = Arrays.stream(objectMapper.readValue(result.getResponse().getContentAsString(), Item[].class)).toList();
+        List<ItemResponse> itemResponseList = Arrays.stream(objectMapper.readValue(result.getResponse().getContentAsString(), ItemResponse[].class)).toList();
 
-        itemList.forEach(item -> {
+        itemResponseList.forEach(item -> {
             Assertions.assertEquals(35455L, item.getProductId());
             Assertions.assertEquals(1L, item.getBrandId());
             if (1 == item.getPriceList()) {
@@ -158,9 +158,9 @@ class DemoClothApplicationIT {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
 
-        List<Item> itemList = Arrays.stream(objectMapper.readValue(result.getResponse().getContentAsString(), Item[].class)).toList();
+        List<ItemResponse> itemResponseList = Arrays.stream(objectMapper.readValue(result.getResponse().getContentAsString(), ItemResponse[].class)).toList();
 
-        itemList.forEach(item -> {
+        itemResponseList.forEach(item -> {
             Assertions.assertEquals(35455L, item.getProductId());
             Assertions.assertEquals(1L, item.getBrandId());
             if (1 == item.getPriceList()) {

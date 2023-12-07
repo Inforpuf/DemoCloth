@@ -1,7 +1,7 @@
 package com.example.demoCloth;
 
 import com.example.demoCloth.controllers.ClothApiController;
-import com.example.demoCloth.model.Item;
+import com.example.demoCloth.model.responses.ItemResponse;
 import com.example.demoCloth.services.ClothService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -33,39 +33,39 @@ public class ClothApiControllerTest {
 
     @Test
     void checkControllerOK() throws Exception {
-        Item item = Item.builder().build();
-        List<Item> itemList = List.of(item);
-        when(service.findItem(any(), any(), any())).thenReturn(itemList);
+        ItemResponse itemResponse = ItemResponse.builder().build();
+        List<ItemResponse> itemResponseList = List.of(itemResponse);
+        when(service.findItem(any(), any(), any())).thenReturn(itemResponseList);
         MvcResult result =
         this.mockMvc.perform(get("/cloths?date=2020-06-14T10.00.00&productId=35455&brandId=1")).andDo(print()).andExpect(status().isOk()).andReturn();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
 
-        List<Item> resultList = Arrays.stream(objectMapper.readValue(result.getResponse().getContentAsString(), Item[].class)).toList();
-        Assertions.assertThatList(resultList).isEqualTo(itemList);
+        List<ItemResponse> resultList = Arrays.stream(objectMapper.readValue(result.getResponse().getContentAsString(), ItemResponse[].class)).toList();
+        Assertions.assertThatList(resultList).isEqualTo(itemResponseList);
     }
 
     @Test
     void checkControllerKO_NoParametersPassed() throws Exception {
-        Item item = Item.builder().build();
-        List<Item> itemList = List.of(item);
-        when(service.findItem(any(), any(), any())).thenReturn(itemList);
+        ItemResponse itemResponse = ItemResponse.builder().build();
+        List<ItemResponse> itemResponseList = List.of(itemResponse);
+        when(service.findItem(any(), any(), any())).thenReturn(itemResponseList);
         this.mockMvc.perform(get("/cloths")).andDo(print()).andExpect(status().is4xxClientError()).andReturn();
     }
 
     @Test
     void checkControllerKO_WrongUrl() throws Exception {
-        Item item = Item.builder().build();
-        List<Item> itemList = List.of(item);
-        when(service.findItem(any(), any(), any())).thenReturn(itemList);
+        ItemResponse itemResponse = ItemResponse.builder().build();
+        List<ItemResponse> itemResponseList = List.of(itemResponse);
+        when(service.findItem(any(), any(), any())).thenReturn(itemResponseList);
         this.mockMvc.perform(get("/item")).andDo(print()).andExpect(status().is4xxClientError()).andReturn();
     }
 
     @Test
     void checkControllerKO_WrongUrl2() throws Exception {
-        Item item = Item.builder().build();
-        List<Item> itemList = List.of(item);
-        when(service.findItem(any(), any(), any())).thenReturn(itemList);
+        ItemResponse itemResponse = ItemResponse.builder().build();
+        List<ItemResponse> itemResponseList = List.of(itemResponse);
+        when(service.findItem(any(), any(), any())).thenReturn(itemResponseList);
         this.mockMvc.perform(get("/cloths/item")).andDo(print()).andExpect(status().is4xxClientError()).andReturn();
     }
 

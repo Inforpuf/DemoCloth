@@ -1,6 +1,6 @@
 package com.example.demoCloth.services;
 
-import com.example.demoCloth.model.Item;
+import com.example.demoCloth.model.responses.ItemResponse;
 
 import java.util.List;
 
@@ -16,5 +16,5 @@ public interface ClothService {
      * @param brandId   brand identifier.
      * @return A list of items containing product identifier, brand identifier, price list, date start and end, and price.
      */
-    List<Item> findItem(String date, String productId, String brandId);
+    List<ItemResponse> findItem(String date, String productId, String brandId);
 }

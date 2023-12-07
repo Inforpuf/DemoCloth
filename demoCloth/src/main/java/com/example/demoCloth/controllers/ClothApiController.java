@@ -1,6 +1,6 @@
 package com.example.demoCloth.controllers;
 
-import com.example.demoCloth.model.Item;
+import com.example.demoCloth.model.responses.ItemResponse;
 import com.example.demoCloth.services.ClothService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +26,11 @@ public class ClothApiController implements IClothApiController{
 
     @Override
     @GetMapping(produces="application/json")
-    public ResponseEntity<List<Item>> findItem(String date, String productId, String brandId) {
-        List<Item> itemList = clothService.findItem(date, productId, brandId);
-        if (itemList.isEmpty()) {
+    public ResponseEntity<List<ItemResponse>> findItem(String date, String productId, String brandId) {
+        List<ItemResponse> itemResponseList = clothService.findItem(date, productId, brandId);
+        if (itemResponseList.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(itemList);
+        return ResponseEntity.ok(itemResponseList);
     }
 }

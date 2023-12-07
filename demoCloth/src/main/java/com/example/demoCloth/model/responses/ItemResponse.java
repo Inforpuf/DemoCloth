@@ -1,4 +1,4 @@
-package com.example.demoCloth.model;
+package com.example.demoCloth.model.responses;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,7 +18,8 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Item {
+@Schema(name = "Item", description = "Operation response")
+public class ItemResponse {
 
     @Schema(name = "Product ID", example = "35455", description = "Unique identifier of the product.")
     @JsonProperty("productId")
@@ -60,13 +61,13 @@ public class Item {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Item item = (Item) o;
-        return Objects.equals(this.productId, item.productId) &&
-                Objects.equals(this.brandId, item.brandId) &&
-                Objects.equals(this.priceList, item.priceList) &&
-                Objects.equals(this.startDate, item.startDate) &&
-                Objects.equals(this.endDate, item.endDate) &&
-                Objects.equals(this.price, item.price);
+        ItemResponse itemResponse = (ItemResponse) o;
+        return Objects.equals(this.productId, itemResponse.productId) &&
+                Objects.equals(this.brandId, itemResponse.brandId) &&
+                Objects.equals(this.priceList, itemResponse.priceList) &&
+                Objects.equals(this.startDate, itemResponse.startDate) &&
+                Objects.equals(this.endDate, itemResponse.endDate) &&
+                Objects.equals(this.price, itemResponse.price);
     }
 
     /**

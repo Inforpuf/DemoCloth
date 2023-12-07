@@ -1,7 +1,7 @@
 package com.example.demoCloth;
 
-import com.example.demoCloth.model.Brand;
-import com.example.demoCloth.model.BrandSpecifications;
+import com.example.demoCloth.model.entities.Brand;
+import com.example.demoCloth.model.specifications.BrandSpecifications;
 import com.example.demoCloth.repositories.BrandRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

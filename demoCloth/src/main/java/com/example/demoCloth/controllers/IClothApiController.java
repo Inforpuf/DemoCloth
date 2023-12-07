@@ -1,6 +1,6 @@
 package com.example.demoCloth.controllers;
 
-import com.example.demoCloth.model.Item;
+import com.example.demoCloth.model.responses.ItemResponse;
 import io.swagger.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -40,10 +40,10 @@ public interface IClothApiController {
             @ApiResponse(responseCode = "400", description = "Invalid data provided",
                     content = @Content(schema = @Schema()))
     })
-    ResponseEntity<List<Item>> findItem(@Parameter(in = "QUERY", description = "Date provided to check item availability", required = true)
+    ResponseEntity<List<ItemResponse>> findItem(@Parameter(in = "QUERY", description = "Date provided to check item availability", required = true)
                                                @NotNull @NotEmpty @Valid @RequestParam(value = "date") String date,
-                                               @Parameter(in = "QUERY", description = "Identifier of the product", required = true)
+                                                @Parameter(in = "QUERY", description = "Identifier of the product", required = true)
                                                @NotNull @NotEmpty @Valid @RequestParam(value = "productId") String productId,
-                                               @Parameter(in = "QUERY", description = "Identifier of the brand", required = true)
+                                                @Parameter(in = "QUERY", description = "Identifier of the brand", required = true)
                                                @NotNull @NotEmpty @Valid @RequestParam(value = "brandId") String brandId) ;
 }
