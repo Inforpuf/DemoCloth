@@ -1,5 +1,7 @@
 springdoc:
   api-docs.path: /api-docs
+  packagesToScan: com.example.demoCloth.controllers, com.example.demoCloth.model
+  pathsToMatch: /v3, /cloths/**
 server:
   servlet:
     contextPath: /api/v3

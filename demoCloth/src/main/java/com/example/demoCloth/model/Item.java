@@ -20,29 +20,29 @@ import java.util.Objects;
 @Builder
 public class Item {
 
-    @Schema(name = "Product ID", example = "35455")
+    @Schema(name = "Product ID", example = "35455", description = "Unique identifier of the product.")
     @JsonProperty("productId")
     private Long productId;
 
-    @Schema(name = "Brand ID", example = "1")
+    @Schema(name = "Brand ID", example = "1", description = "Unique identifier of the brand.")
     @JsonProperty("brandId")
     private Long brandId;
 
-    @Schema(name = "List of price", example = "5")
+    @Schema(name = "List of price", example = "5", description = "Number of the price list.")
     @JsonProperty("priceList")
     private Integer priceList;
 
     @JsonProperty("startDate")
     @JsonFormat(pattern="yyyy-MM-dd-HH.mm.ss")
-    @Schema(name = "Start Date", example = "2020-06-14-00.00.00")
+    @Schema(name = "Start Date", example = "2020-06-14-00.00.00", description = "Start Date for item being active.")
     private LocalDateTime startDate;
 
     @JsonProperty("endDate")
     @JsonFormat(pattern="yyyy-MM-dd-HH.mm.ss")
-    @Schema(name = "End Date", example = "2020-06-14-00.00.00")
+    @Schema(name = "End Date", example = "2020-06-14-00.00.00", description = "End Date for item being active.")
     private LocalDateTime endDate;
 
-    @Schema(name = "Price", example = "35.50")
+    @Schema(name = "Price", example = "35.50", description = "Price in Euros.")
     @JsonProperty("price")
     private String price;
 

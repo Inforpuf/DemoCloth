@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Interface to hold all Swagger annotations and define ClothApiController operations.
  */
-@Tag(name = "Cloth", description = "the Cloth Api")
+@Tag(name = "Cloth", description = "The Cloth Api")
 public interface IClothApiController {
 
     /**
